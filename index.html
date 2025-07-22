@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="vue.global.js"></script>
+</head>
+<body>
+    <h1>Lista de Tareas</h1>
+    <div id="todo-list">
+        <form @submit.prevent="addNewTask">
+            <label for="task-input">Nueva tarea:</label>
+            <input v-model="newTask" id="task-input" placeholder="Ejemplo: Comprar leche" />
+            <button>Agregar</button>
+        </form>
+        <ul>
+            <todo-item
+                v-for="task in tasks"
+                :key="task.id"
+                :title="task.title"
+                @remove="removeTask(task.id)">
+            </todo-item>
+        </ul>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
